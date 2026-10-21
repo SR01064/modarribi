@@ -49,40 +49,40 @@ const ds=(o=0)=>{const d=new Date();d.setDate(d.getDate()+o);return d.toLocaleDa
 const DEF=()=>({p:{ws:8,we:18,city:'القاهرة',method:'egy',fishProxy:location.protocol==='file:'?'http://localhost:8787/api/tts':(location.hostname.endsWith('github.io')?'https://modarribi-fish-audio.aboa22550.workers.dev/api/tts':'/api/tts'),fishVoice:'2fb8ea5aea1a4a5da4b6808704de238e',reminderTime:'20:00',reminderEnabled:false},done:0,days:{},xp:0,chat:[],gym:{log:[]},learn:{},words:[],sug:[],off:{},light:{},voiceUsed:[]});
 let S=DEF(),tab='home',busy='',pend=null,rest=0,sp=0,iv=null,lm=-1;
 let fishAudio=null,fishPlayback=null,audioCtx=null,voiceQueue=[],voiceRunning=false;
-const VOICE_LINES=['You have more strength than your excuses. Prove it with one more step.','Stand up. The future you keep talking about is waiting for your next move.','You can call it difficult. You cannot call it impossible. Begin.','A quiet mind. A steady breath. Now show me what you can do.','You missed a day. Fine. Champions return. Start again today.'];
+const VOICE_LINES=['Oh, look at that. You finally made your to-do list nervous.','That took long enough. The task was starting to think you were friends.','One task down. Your excuses are filing an appeal.','Congratulations. You defeated a checkbox. Try not to let it go to your head.','At this pace, the to-do list might start respecting you.'];
 const AUTO_VOICE_LINES=[
- 'One task cleared. Keep moving. Your next step is waiting.',
- 'You chose action over excuses. Hold on to that momentum.',
- 'Good work. Every small victory sharpens your focus.',
- 'That challenge is behind you. Face the next one with purpose.',
- 'You kept a promise to yourself. Make the next one count.',
- 'Stay steady. Real strength is built one choice at a time.',
- 'Clean finish. Take a breath, then move forward.',
- 'Your effort is showing. Do not let the rhythm fade.',
- 'One more win for the person you are becoming.',
- 'You crossed the hard part. Keep your eyes on the goal.',
- 'Discipline is quiet. Progress is loud. Keep going.',
- 'You did what needed to be done. That is power.',
- 'Good. Reset your focus and prepare for the next challenge.',
- 'Every page, rep, and good choice adds up. Stay sharp.',
- 'The hesitation lost. You took the step. Remember that feeling.',
- 'Strong work. Keep your spirit up and your pace steady.',
- 'That is how momentum starts. Protect it with your next move.',
- 'No shortcuts needed. One task at a time, one victory at a time.',
- 'You are getting stronger through repetition. Keep showing up.',
- 'Take the win. Then turn your attention to what comes next.',
- 'A focused mind can cut through a crowded day. Keep yours clear.',
- 'You finished with intent. Carry that energy forward.',
- 'The next challenge does not get to decide who you are. You do.',
- 'One more step forward. Keep building your own strength.',
- 'You stayed with it until the end. Respect that effort.',
- 'Good progress. Breathe, reset, and keep your edge.',
- 'Another obstacle passed. Your path is opening up.',
- 'That is the result of showing up. Do it again when you are ready.',
- 'Small victories become a strong life. Keep collecting them.',
- 'You made the move. Now keep the momentum alive.'
+ 'Well, look at that. You finally made your to-do list nervous.',
+ 'That took long enough. The task was starting to think you were friends.',
+ 'One task down. Your excuses are filing an appeal.',
+ 'Congratulations. You defeated a checkbox. Try not to let it go to your head.',
+ 'At this pace, the to-do list might start respecting you.',
+ 'Did you finish it? I was just about to start a dramatic speech.',
+ 'That was almost impressive. Do not get used to my compliments.',
+ 'Would you look at that. Focus actually showed up today.',
+ 'Nice. You made procrastination wait for once.',
+ 'One down. The rest of the list just looked at each other nervously.',
+ 'Careful, keep this up and people might think you are disciplined.',
+ 'That task is done. Try not to celebrate for the next three business days.',
+ 'You finally won an argument with your alarm clock.',
+ 'Well, that was unexpected. You did exactly what you said you would.',
+ 'Even your future self is surprised. Keep it going.',
+ 'That checkbox never stood a chance. Took you long enough, though.',
+ 'Task complete. I would clap, but you still have more to do.',
+ 'Look at you, acting like a person who keeps promises. Nice.',
+ 'Now let us see if you can do it again without a motivational speech.',
+ 'Your excuses are quiet. This is suspiciously productive.',
+ 'Not bad. You almost made that look easy.',
+ 'You finished. Please act surprised; it might encourage you.',
+ 'Your to-do list is losing confidence. Excellent.',
+ 'You moved one step forward. Try not to trip over the victory lap.',
+ 'Fine, that was solid. Do not make me say it twice.',
+ 'That task is behind you. Your next excuse has been notified.',
+ 'Well done. I had a whole speech ready in case you did not finish.',
+ 'Look who finally decided to cooperate with the plan.',
+ 'You finished one task. The bar was low, and you cleared it anyway.',
+ 'That is one less thing for you to dramatically avoid tomorrow.'
 ];
-const VOICE_STYLE='Original anime-inspired mentor: mature masculine low register, deep and slightly raspy, energetic, varied, dramatic, confident and commanding. Speak English clearly. Do not imitate any existing character or actor.';
+const VOICE_STYLE='Original anime-inspired mentor: mature masculine low register, deep and slightly raspy, energetic, varied and theatrical. Speak English clearly with playful, lightly sarcastic teasing after each completed task; sound amused and confident, never cruel or demeaning. Do not imitate any existing character or actor.';
 const day=()=>S.days[ds()]||(S.days[ds()]={tasks:[],pr:{},water:0,note:''});
 const tm=m=>{$('#toast').innerHTML=`<div>${esc(m)}</div>`;setTimeout(()=>$('#toast').innerHTML='',3500)};
 const opts=(a,s)=>a.map(x=>`<option ${x==s?'selected':''}>${x}</option>`).join('');
@@ -189,7 +189,7 @@ V.home=()=>{
  return `<div class="card hero"><svg class=ring viewBox="0 0 100 100"><circle class=bg cx=50 cy=50 r=42></circle><circle class=fg cx=50 cy=50 r=42 stroke-dasharray=${C} stroke-dashoffset=${C*(1-pc)}></circle><text x=50 y=57 text-anchor=middle>${Math.round(pc*100)}%</text></svg>
  <div><h2>${gr} يا ${esc(S.p.name)}</h2><small>خلّصت ${dn} من ${n} النهاردة</small><p>🕌 ${PN[nk]} بعد <b class=cd></b></p></div></div>
  ${d.coach?`<div class=card><small>رسالة المدرّب</small><p style="color:var(--t)">${esc(d.coach)}</p></div>`:''}
- <div class=card><h3>🎙️ صوت المدرّب · English</h3><p>صوت أصلي مستوحى من أجواء الأنمي: عميق، أجش، درامي وواثق. بعد إتمام كل مهمة سيشغّل التطبيق تشجيعًا مختلفًا تلقائيًا.</p><select class=in id=fishLine>${VOICE_LINES.map((line,i)=>`<option value="${i}">${esc(line)}</option>`).join('')}</select><button class=btn data-a=fishSpeak>▶ اسمع التشجيع</button><small id=fishStatus style="display:block;margin-top:8px">${location.protocol==='file:'?'أنت فاتح ملف HTML مباشرة. شغّل start.bat وافتح http://localhost:8787 بدلًا منه.':S.p.fishVoice&&S.p.fishProxy?'الصوت جاهز للاختبار':'صوت Fish Audio يحتاج خادمًا وسيطًا آمنًا'}</small><p style="direction:ltr;text-align:left;margin-top:8px">عنوان التطبيق: http://localhost:8787<br>عنوان خادم الصوت: http://localhost:8787/api/tts</p><button class="btn o" data-a=tab data-t=set>⚙️ إعدادات ربط الصوت</button><audio id=fishPlayer controls style="display:none;width:100%;margin-top:10px"></audio></div>
+ <div class=card><h3>🎙️ صوت المدرّب · English</h3><p>صوت أصلي مستوحى من أجواء الأنمي: عميق وأجش، بهزار ساخر خفيف. بعد إتمام كل مهمة سيقول تعليقًا إنجليزيًا مختلفًا تلقائيًا.</p><select class=in id=fishLine>${VOICE_LINES.map((line,i)=>`<option value="${i}">${esc(line)}</option>`).join('')}</select><button class=btn data-a=fishSpeak>▶ اسمع التعليق</button><small id=fishStatus style="display:block;margin-top:8px">${location.protocol==='file:'?'أنت فاتح ملف HTML مباشرة. شغّل start.bat وافتح http://localhost:8787 بدلًا منه.':S.p.fishVoice&&S.p.fishProxy?'الصوت جاهز للاختبار':'صوت Fish Audio يحتاج خادمًا وسيطًا آمنًا'}</small><p style="direction:ltr;text-align:left;margin-top:8px">عنوان التطبيق: http://localhost:8787<br>عنوان خادم الصوت: http://localhost:8787/api/tts</p><button class="btn o" data-a=tab data-t=set>⚙️ إعدادات ربط الصوت</button><audio id=fishPlayer controls style="display:none;width:100%;margin-top:10px"></audio></div>
  <div class=card><input id=lg class=in placeholder="سجّل يومك: ذاكرت ساعة وصليت الظهر وتمرنت رجل"><button class=btn data-a=log>حلّل وسجّل</button><button class="btn o" data-a=lite>😮‍💨 مخنوق / عاوز أفصل</button></div>
  ${pend?`<div class=card><b>فهمت كده:</b><p>${esc(pend.summary)}</p>${d.tasks.map(t=>`<label class=cb><input type=checkbox data-lt=${t.id} ${pend.tasks.includes(t.id)?'checked':''}>${esc(t.t)}</label>`).join('')}${Object.keys(PN).map(k=>`<label class=cb><input type=checkbox data-lp=${k} ${(pend.prayers||[]).includes(k)?'checked':''}>${PN[k]}</label>`).join('')}<button class=btn data-a=lok>احفظ</button><button class="btn o" data-a=lno>إلغاء</button></div>`:''}
 <div class=card><h3>مهام النهاردة</h3>${n?d.tasks.map(t=>`<div class="tk ${t.done?'dn':''}" data-cat="${esc(t.cat||'')}" style="--task-color:var(--energy)"><button class=ck data-a=tg data-i=${t.id}>${t.done?'✓':''}</button><div class=tb><b>${esc(t.t)}</b><small><span class=task-icon>${CE[t.cat]||'✨'}</span> ${esc(t.time||'')} ${esc(t.d||'')}</small></div><button class=sw data-a=swap data-i=${t.id}>⟳</button></div>`).join(''):'<p>مفيش مهام لسه.</p>'}<button class="btn o" data-a=replan>جهّز الخطة تاني</button></div>
