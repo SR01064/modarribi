@@ -2,7 +2,7 @@ const APP_ORIGIN = 'https://sr01064.github.io';
 const ALLOWED_REFERENCE_IDS = new Set([
   '2fb8ea5aea1a4a5da4b6808704de238e',
 ]);
-const VOICE_STYLE = 'deep, slightly raspy, mature masculine voice; energetic, varied, dramatic, confident and commanding; original anime-inspired mentor; clear English; do not imitate any existing character or actor';
+const VOICE_STYLE = 'deep, slightly raspy, mature masculine voice; energetic, varied and theatrical; original anime-inspired mentor; clear English with playful, lightly sarcastic teasing, sounding amused and confident, never cruel or demeaning; do not imitate any existing character or actor';
 
 function json(body, status = 200, origin = '') {
   const headers = {
