@@ -46,7 +46,7 @@ nav button{flex:1;border:0;background:none;font:inherit;font-size:11px;color:var
 const $=s=>document.querySelector(s),uid=()=>Math.random().toString(36).slice(2,8);
 const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const ds=(o=0)=>{const d=new Date();d.setDate(d.getDate()+o);return d.toLocaleDateString('en-CA')};
-const DEF=()=>({p:{ws:8,we:18,city:'القاهرة',method:'egy',fishProxy:location.protocol==='file:'?'http://localhost:8787/api/tts':(location.hostname.endsWith('github.io')?'':'/api/tts'),fishVoice:'2fb8ea5aea1a4a5da4b6808704de238e',reminderTime:'20:00',reminderEnabled:false},done:0,days:{},xp:0,chat:[],gym:{log:[]},learn:{},words:[],sug:[],off:{},light:{},voiceUsed:[]});
+const DEF=()=>({p:{ws:8,we:18,city:'القاهرة',method:'egy',fishProxy:location.protocol==='file:'?'http://localhost:8787/api/tts':(location.hostname.endsWith('github.io')?'https://modarribi-fish-audio.aboa22550.workers.dev/api/tts':'/api/tts'),fishVoice:'2fb8ea5aea1a4a5da4b6808704de238e',reminderTime:'20:00',reminderEnabled:false},done:0,days:{},xp:0,chat:[],gym:{log:[]},learn:{},words:[],sug:[],off:{},light:{},voiceUsed:[]});
 let S=DEF(),tab='home',busy='',pend=null,rest=0,sp=0,iv=null,lm=-1;
 let fishAudio=null,fishPlayback=null,audioCtx=null,voiceQueue=[],voiceRunning=false;
 const VOICE_LINES=['You have more strength than your excuses. Prove it with one more step.','Stand up. The future you keep talking about is waiting for your next move.','You can call it difficult. You cannot call it impossible. Begin.','A quiet mind. A steady breath. Now show me what you can do.','You missed a day. Fine. Champions return. Start again today.'];
@@ -340,6 +340,6 @@ function checkReminder(){if(!S.p.reminderEnabled)return;const now=new Date(),hh=
 function tick(){const n=new Date();checkReminder();document.querySelectorAll('.cd').forEach(e=>{const s=Math.max(0,Math.floor((nextP()[1]-n)/1e3));e.textContent=[Math.floor(s/3600),Math.floor(s/60)%60,s%60].map(x=>String(x).padStart(2,'0')).join(':')});
  if(rest>0){rest--;const r=$('#rs');r&&(r.textContent=rest);if(!rest&&navigator.vibrate)navigator.vibrate(300)}
  if(n.getMinutes()!=lm){lm=n.getMinutes();if(!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)&&!busy&&!pend)render()}}
-(async()=>{startSceneRotation();await dbOpen();const s=await dbGet('S');if(s)S={...DEF(),...s,p:{...DEF().p,...s.p}};if(location.hostname.endsWith('github.io')&&S.p.fishProxy==='/api/tts')S.p.fishProxy='';repairLearnState();render();if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'))navigator.serviceWorker.register('./sw.js').catch(()=>{});setInterval(tick,1000);
+(async()=>{startSceneRotation();await dbOpen();const s=await dbGet('S');if(s)S={...DEF(),...s,p:{...DEF().p,...s.p}};if(location.hostname.endsWith('github.io')&&(!S.p.fishProxy||S.p.fishProxy==='/api/tts'))S.p.fishProxy='https://modarribi-fish-audio.aboa22550.workers.dev/api/tts';repairLearnState();render();if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'))navigator.serviceWorker.register('./sw.js').catch(()=>{});setInterval(tick,1000);
  if(S.done&&!day().tasks.length)run('المدرّب بيجهّز خطتك…',plan)})();
 </script></body></html>
