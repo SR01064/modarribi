@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: modarribi-fish-audio
+    runtime: node
+    plan: free
+    rootDir: fish-audio-proxy
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: HOST
+        value: 0.0.0.0
+      - key: APP_ORIGIN
+        value: https://sr01064.github.io
+      - key: FISH_ALLOWED_REFERENCE_IDS
+        value: 2fb8ea5aea1a4a5da4b6808704de238e
+      - key: FISH_API_KEY
+        sync: false
