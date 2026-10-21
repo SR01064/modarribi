@@ -301,7 +301,8 @@ const A={
 function unlockVoiceAudio(){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;audioCtx=audioCtx||new C();if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{})}catch(_){}}
 async function fishTts(text,automatic=false){
  const status=$('#fishStatus'),player=$('#fishPlayer');
- if(!S.p.fishProxy||!S.p.fishVoice){tm('أدخل عنوان الخادم الوسيط ومعرّف الصوت في الإعدادات');return}
+ if(!S.p.fishProxy){const m=location.hostname.endsWith('github.io')?'عنوان خادم الصوت لسه مش مضاف. لازم ننشر الخادم الوسيط أولًا، وبعدها نحط رابطه في الإعدادات.':'اكتب عنوان خادم الصوت في الإعدادات.';if(status)status.textContent=m;tm(m);return}
+ if(!S.p.fishVoice){const m='أدخل معرّف صوت مصرحًا به في الإعدادات.';if(status)status.textContent=m;tm(m);return}
  if(status)status.textContent='جاري إنشاء الصوت…';
  try{
   const endpoint=new URL(S.p.fishProxy,location.href);
