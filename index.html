@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090a10"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/icon.svg" type="image/svg+xml"><title>مدرّبي</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* ===== الألوان: ليلي عميق + برتقالي طاقة ===== */
+:root{--bg:#090a10;--c:#15171d;--t:#f6f0e8;--m:#b6b1ad;--a:#ff6b18;--p:#a93224;--ok:#18a773;--ln:#39353a;--g:linear-gradient(132deg,#090a10 0%,#17131a 48%,#4a1912 82%,#dc5019 145%);--sh:0 12px 34px rgba(0,0,0,.48)}
+@media(prefers-color-scheme:dark){:root{--bg:#090a10;--c:#15171d;--t:#f6f0e8;--m:#b6b1ad;--ln:#39353a;--sh:0 12px 34px rgba(0,0,0,.48)}}
+*{box-sizing:border-box;margin:0}
+body{font-family:Cairo,Tajawal,system-ui,sans-serif;background:radial-gradient(ellipse at 95% 8%,rgba(224,76,22,.14),transparent 32%),radial-gradient(ellipse at 4% 52%,rgba(157,38,35,.12),transparent 34%),var(--bg);color:var(--t);padding-top:env(safe-area-inset-top)}
+header{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--g);color:#fff;border-radius:0 0 26px 12px;border-bottom:1px solid #ff762655;box-shadow:0 8px 30px #0008}
+header .av{width:44px;height:44px;border-radius:50%;background:#ffffff33 center/cover;display:grid;place-items:center;font-weight:800;font-size:20px}
+header .nm{flex:1;font-weight:800}.chip{background:#ffffff26;border-radius:20px;padding:3px 10px;font-size:13px;white-space:nowrap}
+main{padding:14px 14px 100px;max-width:680px;margin:auto}
+.card{background:linear-gradient(145deg,#191a20f5,#12131af7);border:1px solid #ffffff0d;border-inline-start:2px solid #ff6b184a;border-radius:18px 10px 18px 10px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)}
+h2,h3{margin-bottom:6px}small,p,label{color:var(--m);font-size:14px;line-height:1.7}label{display:block;margin-top:10px}
+.btn{font:inherit;font-weight:800;border:0;border-radius:11px 5px 11px 5px;padding:10px 16px;margin:6px 0 0 6px;background:linear-gradient(120deg,#ec5819,#ff8125);color:#fff;box-shadow:0 4px 14px #ff5c1a30;cursor:pointer;text-decoration:none;display:inline-block}
+.btn.o{background:transparent;color:var(--p);border:2px solid #59433f;box-shadow:none}@media(prefers-color-scheme:dark){.btn.o{color:#ffc19c}}
+.in{width:100%;font:inherit;color:var(--t);background:var(--bg);border:2px solid var(--ln);border-radius:14px;padding:10px;margin-top:6px}
+.hero{background:var(--g);color:#fff;display:flex;gap:14px;align-items:center;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;inset-inline-end:-28px;top:12px;width:150px;height:4px;background:linear-gradient(90deg,transparent,#ff9a42,#fff1d0,transparent);transform:rotate(-36deg);opacity:.75;box-shadow:0 0 16px #ff6b18}.hero p,.hero small{color:#ffffffd0}
+.ring{width:96px;height:96px;flex:none}.ring circle{fill:none;stroke-width:9;stroke-linecap:round}.ring .bg{stroke:#ffffff33}.ring .fg{stroke:#ffb347;transition:stroke-dashoffset 1s cubic-bezier(.2,.8,.2,1);transform:rotate(-90deg);transform-origin:50% 50%}
+.ring text{fill:#fff;font-weight:800;font-size:20px}
+.tk{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--ln)}.tk:last-child{border:0}
+.tb{flex:1}.tb b{display:block}.tk.dn .tb b{text-decoration:line-through;opacity:.5}
+.ck{width:34px;height:34px;border-radius:50%;border:2px solid var(--a);background:none;color:#fff;font-size:18px;cursor:pointer}.dn .ck{background:var(--ok);border-color:var(--ok)}
+.sw{border:0;background:none;font-size:20px;color:var(--m);cursor:pointer}
+nav{position:fixed;bottom:0;inset-inline:0;display:flex;background:#101116f5;border-top:1px solid #ff6b1840;box-shadow:0 -8px 28px #0008;padding:6px 4px calc(6px + env(safe-area-inset-bottom));border-radius:18px 18px 0 0;backdrop-filter:blur(12px)}
+nav button{flex:1;border:0;background:none;font:inherit;font-size:11px;color:var(--m);padding:4px 0;cursor:pointer}nav button span{display:block;font-size:21px}nav .on{color:var(--a);font-weight:800}
+.bn{background:var(--ok);color:#fff;border-radius:16px;padding:12px;margin-bottom:12px;font-weight:800;text-align:center}
+.bub{padding:10px 14px;border-radius:18px;margin:6px 0;max-width:86%;line-height:1.7;white-space:pre-wrap}.bub.u{background:var(--p);color:#fff;margin-inline-start:auto}.bub.a{background:var(--c);box-shadow:var(--sh)}
+.cb{display:flex;gap:8px;align-items:center;color:var(--t)}
+.cd{font-size:30px;font-weight:800;letter-spacing:2px;direction:ltr;display:block}
+.rest{margin-top:10px;font-size:20px;color:var(--a)}.sp{width:80px;height:24px}
+.bars{display:flex;gap:6px;align-items:flex-end;height:70px;margin:8px 0}.bars i{flex:1;background:var(--a);border-radius:6px 6px 0 0;min-height:3px}
+#ov .ld{position:fixed;inset:0;background:#0009;display:grid;place-content:center;justify-items:center;gap:12px;color:#fff;font-weight:800;z-index:9}
+#ov i{width:40px;height:40px;border:5px solid #fff4;border-top-color:var(--a);border-radius:50%;animation:s 1s linear infinite}@keyframes s{to{transform:rotate(360deg)}}
+#toast{position:fixed;top:14px;inset-inline:14px;z-index:10;pointer-events:none}#toast div{background:#222;color:#fff;border-radius:14px;padding:10px 14px;text-align:center}
+.cf{position:fixed;top:-10px;width:9px;height:14px;z-index:11;animation:f 2.2s ease-in forwards}@keyframes f{to{transform:translate(var(--x),105vh) rotate(720deg)}}
+@media(prefers-reduced-motion:reduce){.ring .fg{transition:none}.cf{display:none}}
+</style></head><body>
+<div id="app"></div><div id="ov"></div><div id="toast"></div>
+<script>
+/* ===== أدوات عامة ===== */
+const $=s=>document.querySelector(s),uid=()=>Math.random().toString(36).slice(2,8);
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ds=(o=0)=>{const d=new Date();d.setDate(d.getDate()+o);return d.toLocaleDateString('en-CA')};
+const DEF=()=>({p:{ws:8,we:18,city:'القاهرة',method:'egy',fishProxy:location.protocol==='file:'?'http://localhost:8787/api/tts':'/api/tts',fishVoice:'2fb8ea5aea1a4a5da4b6808704de238e',reminderTime:'20:00',reminderEnabled:false},done:0,days:{},xp:0,chat:[],gym:{log:[]},learn:{},words:[],sug:[],off:{},light:{},voiceUsed:[]});
+let S=DEF(),tab='home',busy='',pend=null,rest=0,sp=0,iv=null,lm=-1;
+let fishAudio=null,fishPlayback=null,audioCtx=null,voiceQueue=[],voiceRunning=false;
+const VOICE_LINES=['You have more strength than your excuses. Prove it with one more step.','Stand up. The future you keep talking about is waiting for your next move.','You can call it difficult. You cannot call it impossible. Begin.','A quiet mind. A steady breath. Now show me what you can do.','You missed a day. Fine. Champions return. Start again today.'];
+const AUTO_VOICE_LINES=[
+ 'One task cleared. Keep moving. Your next step is waiting.',
+ 'You chose action over excuses. Hold on to that momentum.',
+ 'Good work. Every small victory sharpens your focus.',
+ 'That challenge is behind you. Face the next one with purpose.',
+ 'You kept a promise to yourself. Make the next one count.',
+ 'Stay steady. Real strength is built one choice at a time.',
+ 'Clean finish. Take a breath, then move forward.',
+ 'Your effort is showing. Do not let the rhythm fade.',
+ 'One more win for the person you are becoming.',
+ 'You crossed the hard part. Keep your eyes on the goal.',
+ 'Discipline is quiet. Progress is loud. Keep going.',
+ 'You did what needed to be done. That is power.',
+ 'Good. Reset your focus and prepare for the next challenge.',
+ 'Every page, rep, and good choice adds up. Stay sharp.',
+ 'The hesitation lost. You took the step. Remember that feeling.',
+ 'Strong work. Keep your spirit up and your pace steady.',
+ 'That is how momentum starts. Protect it with your next move.',
+ 'No shortcuts needed. One task at a time, one victory at a time.',
+ 'You are getting stronger through repetition. Keep showing up.',
+ 'Take the win. Then turn your attention to what comes next.',
+ 'A focused mind can cut through a crowded day. Keep yours clear.',
+ 'You finished with intent. Carry that energy forward.',
+ 'The next challenge does not get to decide who you are. You do.',
+ 'One more step forward. Keep building your own strength.',
+ 'You stayed with it until the end. Respect that effort.',
+ 'Good progress. Breathe, reset, and keep your edge.',
+ 'Another obstacle passed. Your path is opening up.',
+ 'That is the result of showing up. Do it again when you are ready.',
+ 'Small victories become a strong life. Keep collecting them.',
+ 'You made the move. Now keep the momentum alive.'
+];
+const VOICE_STYLE='Original anime-inspired mentor: mature masculine low register, deep and slightly raspy, energetic, varied, dramatic, confident and commanding. Speak English clearly. Do not imitate any existing character or actor.';
+const day=()=>S.days[ds()]||(S.days[ds()]={tasks:[],pr:{},water:0,note:''});
+const tm=m=>{$('#toast').innerHTML=`<div>${esc(m)}</div>`;setTimeout(()=>$('#toast').innerHTML='',3500)};
+const opts=(a,s)=>a.map(x=>`<option ${x==s?'selected':''}>${x}</option>`).join('');
+
+/* ===== قاعدة البيانات المحلية (IndexedDB) مع بديل في الذاكرة ===== */
+const mem={};let idb=null;
+const dbOpen=()=>new Promise(r=>{try{const q=indexedDB.open('modarrebi',1);q.onupgradeneeded=()=>q.result.createObjectStore('kv');q.onsuccess=()=>{idb=q.result;r()};q.onerror=()=>r()}catch(e){r()}});
+const dbGet=k=>new Promise(r=>{try{if(!idb)return r(mem[k]);const q=idb.transaction('kv').objectStore('kv').get(k);q.onsuccess=()=>r(q.result);q.onerror=()=>r(mem[k])}catch(e){r(mem[k])}});
+const save=()=>{mem.S=S;return new Promise(r=>{try{if(!idb)return r();const t=idb.transaction('kv','readwrite');t.objectStore('kv').put(S,'S');t.oncomplete=r;t.onerror=r}catch(e){r()}})};
+
+/* ===== مساعد محلي: لا يحتاج مفتاح Claude API ===== */
+function offlineAI(user,msgs,json=true,system=''){
+ const last=String(msgs?.[msgs.length-1]?.content??user??''),p=String(user??'')+'\n'+String(system??'')+'\n'+last,low=p.toLowerCase();
+ if(!json)return 'You showed up and gave it a real try. Pick one thing you did well, then choose one small step to improve next time.';
+ if(p.includes('مفاتيح الصلوات')&&p.includes('مهامه:')){
+  const complete=/(خلصت|أنجزت|عملت|ذاكرت|تمرنت|صليت|قرأت|قريت|انتهيت|تم)/.test(p);
+  const tasks=complete?day().tasks.filter(t=>p.includes(t.t)).map(t=>t.id):[];
+  const prayers=Object.keys(PN).filter(k=>p.includes(PN[k]));
+  return {tasks,prayers,summary:'سجلت اللي ظهر بوضوح في كلامك. راجع الاختيارات قبل الحفظ.',overwhelmed:/(مخنوق|مرهق|مش قادر|مضغوط|تعبان)/.test(p)};
+ }
+ if(p.includes('المهمة دي مش مناسبة')){
+  const original=p.match(/المهمة دي مش مناسبة: (.+?)\. اقترح/)?.[1]||'';
+  const alt=FB.find(x=>x[0]!==original)||FB[0];
+  return {t:alt[0],cat:alt[1],time:alt[2],d:'بديل بسيط تقدر تعدّله وقت ما تحب'};
+ }
+ if(p.includes('"sum"')&&p.includes('"best"')){
+  const done=[...Array(7)].flatMap((_,i)=>S.days[ds(-i)]?.tasks||[]).filter(t=>t.done).length;
+  return {sum:`أنجزت ${done} مهمة خلال آخر أسبوع. خليك مركز على الاستمرار، حتى لو بخطوات صغيرة.`,best:'الاستمرار في تسجيل يومك',weak:'المهام التي تأجلت',next:'اختار ٣ أولويات واقعية كل يوم'};
+ }
+ if(p.includes('"ex"')&&p.includes('"sets"'))return {type:'تمرين جسم كامل خفيف',why:'خطة عامة بأربع حركات أساسية، خففها أو أوقفها لو شعرت بألم.',ex:[{n:'قرفصاء بوزن الجسم',sets:3,reps:'8–12',how:'انزل ببطء مع ثبات الظهر والركبتين باتجاه أصابع القدم.',err:'لا تحبس النفس ولا تكمل مع ألم حاد.',q:'قرفصاء وزن الجسم شرح صحيح',w:0},{n:'ضغط على الحائط أو سطح مرتفع',sets:3,reps:'6–10',how:'حافظ على الجسم مستقيمًا وانزل بتحكم.',err:'لا تهبط بسرعة أو تقفل المرفقين بعنف.',q:'تمرين ضغط مبتدئين على الحائط',w:0},{n:'جسر الحوض',sets:3,reps:'10–12',how:'ارفع الحوض مع شد بسيط للبطن ثم انزل ببطء.',err:'لا تبالغ في تقويس أسفل الظهر.',q:'تمرين جسر الحوض للمبتدئين',w:0},{n:'سحب حقيبة خفيفة',sets:3,reps:'8–12',how:'اسحب الحقيبة باتجاه الجذع مع ظهر ثابت.',err:'ابدأ بحمل خفيف وتوقف لو ظهر ألم.',q:'تمرين سحب حقيبة في البيت',w:0}]};
+ if(p.includes('"topic"'))return {topic:['احكي عن عادة صغيرة عايز تثبتها','موقف اتعلمت منه حاجة جديدة','إيه الحاجة اللي بتخليك تكمل يوم صعب؟','اشرح هدفك كأنك بتشرحه لصاحبك'][Math.floor(Math.random()*4)]};
+ if(p.includes('"title"')&&p.includes('"detail"')){
+  if(p.includes('A2')||p.includes('إنجليزي'))return {title:'تدريب إنجليزي: يومك في ٥ جمل',detail:'اكتب خمس جمل قصيرة بالإنجليزية عن يومك. استخدم: I woke up, I studied, I worked, I felt, I learned. اقرأها بصوت عالٍ.',q:'English A2 talk about your daily routine'};
+  if(p.includes('حاسبات ومعلومات'))return {title:'أساسيات البرمجة: المتغيرات',detail:'تعلّم معنى المتغير، ثم اكتب مثالًا يخزن اسمًا ورقمًا. جرّب تغيير القيمة ولاحظ النتيجة.',q:'شرح المتغيرات في البرمجة للمبتدئين بالعربي'};
+  if(p.includes('القرآن'))return {title:'ورد قصير بتدبر',detail:'اقرأ صفحتين أو مقدارًا يناسب وقتك، واختر آية واحدة لتتدبر معناها من تفسير موثوق.',q:''};
+  if(p.includes('الكتاب'))return {title:'قراءة مركزة لمدة ١٠ دقائق',detail:'اقرأ من الكتاب الحالي عشر دقائق، واكتب فكرة واحدة تريد تذكرها.',q:''};
+  if(p.includes('فيديو مفيد'))return {title:'تواصل بثقة: الاستماع قبل الرد',detail:'شاهد شرحًا قصيرًا عن الاستماع الفعال، ثم لخّص فكرته في سطرين.',q:'مهارة الاستماع الفعال شرح عربي'};
+  return {title:'خطوة تعلم صغيرة',detail:'اقرأ أو شاهد شرحًا قصيرًا في هدفك الحالي، ثم دوّن أهم فكرة وتطبيقًا واحدًا.',q:''};
+ }
+ if(p.includes('"reply"')){
+  const completed=/(خلصت|أنجزت|عملت|تمرنت|صليت|قرأت|ذاكرت|انتهيت)/.test(last);
+  const done=completed?day().tasks.filter(t=>last.includes(t.t)).map(t=>t.id):[];
+  return {reply:completed?'عاش إنك بدأت وخلصت خطوة 💪 خلّينا نختار حاجة واحدة تالية ونكمل بهدوء.':'أنا معاك 💪 اكتب هدفك أو اللي مضايقك، ونقسمه لخطوة صغيرة تقدر تبدأها دلوقتي.',done,overwhelmed:/(مخنوق|مرهق|مش قادر|مضغوط|تعبان)/.test(last)};
+ }
+ if(p.includes('"coach"')&&p.includes('"tasks"'))return {coach:'ابدأ بالأساسيات وخد كل مهمة على حدة. مش لازم اليوم يبقى مثالي؛ المهم تبدأ.',tasks:FB.map(([t,cat,time])=>({t,cat,time,d:''}))};
+ return {};
+}
+async function ai(sys,user,json=true,msgs){return offlineAI(user,msgs,json,sys)}
+const SYS=()=>`إنت "مدرّبي"، مدرّب شخصي ذكي بتتكلم مصري بسيط وودود ومشجع ومن غير أي لوم. المستخدم: ${S.p.name}. شغله من ${S.p.ws}:00 لـ ${S.p.we}:00 والمهام بعد كده بس. أهدافه: تقوية الجسم، إنجليزي مستوى A2، ثقة بالنفس، كلام مرتب من غير خوف، ترتيب التفكير، صلاة وقرآن، وعلوم حاسبات ومعلومات وإكسيل.`;
+const ctx=()=>'السياق: '+JSON.stringify({آخر7:[...Array(7)].map((_,i)=>{const d=S.days[ds(-i-1)];return d&&{يوم:ds(-i-1),خلّص:d.tasks.filter(t=>t.done).map(t=>t.t),ناقص:d.tasks.filter(t=>!t.done).length,صلوات:Object.keys(d.pr).length}}).filter(Boolean),اقترحته_قبل_كده:S.sug.slice(-40)});
+async function run(msg,fn){busy=msg;render();try{await fn()}catch(e){tm('حصلت مشكلة، جرّب تاني بعد شوية')}busy='';await save();render()}
+const addXp=n=>S.xp=Math.max(0,S.xp+n),lvl=()=>Math.floor(S.xp/100)+1;
+const streak=()=>{let s=0;for(let i=0;i<400;i++){const k=ds(-i),d=S.days[k];if(d&&(d.tasks.some(t=>t.done)||S.light[k]))s++;else if(i>0)break}return s};
+
+/* ===== خطة اليوم ===== */
+const CE={quran:'📖',gym:'💪',eng:'🇬🇧',book:'📚',video:'🎬',skill:'🛠',conf:'🗣',iq:'🧩',cs:'💻'};
+const FB=[['قرآن: صفحتين','quran','20:00'],['تمرين النهاردة','gym','19:00'],['إنجليزي: ١٥ دقيقة فيديو','eng','20:30'],['قراءة ١٠ صفحات','book','21:15'],['درس حاسبات صغير','cs','21:45']];
+async function plan(){
+ const d=day(),lt=S.light[ds()];d.tasks=d.tasks.filter(t=>t.done);
+ if(!d.cd){d.cd=1;const y=S.days[ds(-1)];if(y&&!S.light[ds(-1)])y.tasks.filter(t=>!t.done&&!t.c).forEach(t=>d.tasks.push({...t,id:uid(),c:1,done:false,d:'اتأجلت من امبارح، وعادي خالص 🌿'}))}
+ let r;
+ try{r=await ai(SYS()+'\n'+ctx(),`جهّز خطة النهاردة: ${lt?'مهمتين أو تلاتة خفاف جدًا ومريحين':'٤ لـ ٦ مهام صغيرة'} بأوقات بعد ${S.p.we}:00. الأساسيات: قرآن وتمرين، والباقي بالتناوب من كتاب/إنجليزي/فيديو مفيد/مهارة/تحدي قبول الناس/تمرين ذكاء/درس حاسبات. متكررش اللي اقترحته قبل كده. رجّع {"coach":"رسالة تشجيع قصيرة فيها مثال واقعي وملاحظة محددة على امبارح","tasks":[{"t":"","time":"HH:MM","cat":"quran|gym|eng|book|video|skill|conf|iq|cs","d":"تفصيلة قصيرة"}]}`)}
+ catch(e){r={coach:lt?'النهاردة خفيفة، وده كفاية تمامًا 🤍':'يوم جديد وخطوات صغيرة، وكل خطوة بتفرق 💪',tasks:(lt?[FB[0],['مشي خفيف ١٠ دقايق','gym','19:30']]:FB).map(([t,cat,time])=>({t,cat,time,d:''}))}}
+ r.tasks.forEach(t=>{d.tasks.push({...t,id:uid(),done:false});S.sug.push(t.t)});
+ d.tasks.sort((a,b)=>(a.time||'').localeCompare(b.time||''));d.coach=r.coach;
+}
+async function lightMode(){S.light[ds()]=1;await plan()}
+
+/* ===== مواقيت الصلاة بالحساب (بدون إنترنت) ===== */
+const PN={fajr:'الفجر',dhuhr:'الظهر',asr:'العصر',maghrib:'المغرب',isha:'العشاء'};
+const CITY={'القاهرة':[30.04,31.24],'الجيزة':[30.01,31.21],'الإسكندرية':[31.2,29.92],'الفيوم':[29.31,30.84],'المنصورة':[31.04,31.38],'طنطا':[30.79,31.0],'أسيوط':[27.18,31.18],'الأقصر':[25.7,32.64],'أسوان':[24.09,32.9],'بورسعيد':[31.26,32.3]};
+const MT={egy:['الهيئة المصرية العامة للمساحة',19.5,17.5],mwl:['رابطة العالم الإسلامي',18,17],isna:['أمريكا الشمالية',15,15]};
+function times(dt){
+ const [lat,lng]=CITY[S.p.city]||CITY['القاهرة'],m=MT[S.p.method]||MT.egy,R=Math.PI/180,tz=-dt.getTimezoneOffset()/60;
+ const d=Date.UTC(dt.getFullYear(),dt.getMonth(),dt.getDate(),12)/864e5+2440587.5-2451545;
+ const g=(357.529+.98560028*d)*R,q=(280.459+.98564736*d)%360,L=(q+1.915*Math.sin(g)+.02*Math.sin(2*g))*R,e=(23.439-3.6e-7*d)*R;
+ const dec=Math.asin(Math.sin(e)*Math.sin(L)),ra=((Math.atan2(Math.cos(e)*Math.sin(L),Math.cos(L))/R/15)+24)%24;
+ const eq=((q/15-ra)%24+36)%24-12,noon=12+tz-lng/15-eq;
+ const T=a=>Math.acos((Math.sin(a*R)-Math.sin(dec)*Math.sin(lat*R))/(Math.cos(dec)*Math.cos(lat*R)))/R/15;
+ const asrA=Math.atan(1/(1+Math.tan(Math.abs(lat*R-dec))))/R;
+ const h={fajr:noon-T(-m[1]),dhuhr:noon+.035,asr:noon+T(asrA),maghrib:noon+T(-.833),isha:noon+T(-m[2])};
+ const b=new Date(dt.getFullYear(),dt.getMonth(),dt.getDate()).getTime(),o={};
+ for(const k in h)o[k]=new Date(b+(h[k]*60+(S.off[k]||0))*6e4);return o;
+}
+const fmt=t=>{let h=t.getHours();const s=h>=12?'م':'ص';h=h%12||12;return h+':'+String(t.getMinutes()).padStart(2,'0')+' '+s};
+function nextP(){const n=new Date(),T=times(n);for(const k in PN)if(T[k]>n)return[k,T[k]];const t=new Date(n);t.setDate(t.getDate()+1);return['fajr',times(t).fajr]}
+
+/* ===== الواجهات ===== */
+const V={};
+V.home=()=>{
+ const d=day(),n=d.tasks.length,dn=d.tasks.filter(t=>t.done).length,pc=n?dn/n:0,[nk,nt]=nextP(),h=new Date().getHours(),C=264;
+ const gr=h<12?'صباح الخير':h<18?'مساء النور':'مساء الخير',W=[...Array(7)].map((_,i)=>{const x=S.days[ds(i-6)];return x&&x.tasks.length?x.tasks.filter(t=>t.done).length/x.tasks.length:0});
+ return `<div class="card hero"><svg class=ring viewBox="0 0 100 100"><circle class=bg cx=50 cy=50 r=42></circle><circle class=fg cx=50 cy=50 r=42 stroke-dasharray=${C} stroke-dashoffset=${C*(1-pc)}></circle><text x=50 y=57 text-anchor=middle>${Math.round(pc*100)}%</text></svg>
+ <div><h2>${gr} يا ${esc(S.p.name)}</h2><small>خلّصت ${dn} من ${n} النهاردة</small><p>🕌 ${PN[nk]} بعد <b class=cd></b></p></div></div>
+ ${d.coach?`<div class=card><small>رسالة المدرّب</small><p style="color:var(--t)">${esc(d.coach)}</p></div>`:''}
+ <div class=card><h3>🎙️ صوت المدرّب · English</h3><p>صوت أصلي مستوحى من أجواء الأنمي: عميق، أجش، درامي وواثق. بعد إتمام كل مهمة سيشغّل التطبيق تشجيعًا مختلفًا تلقائيًا.</p><select class=in id=fishLine>${VOICE_LINES.map((line,i)=>`<option value="${i}">${esc(line)}</option>`).join('')}</select><button class=btn data-a=fishSpeak>▶ اسمع التشجيع</button><small id=fishStatus style="display:block;margin-top:8px">${location.protocol==='file:'?'أنت فاتح ملف HTML مباشرة. شغّل start.bat وافتح http://localhost:8787 بدلًا منه.':S.p.fishVoice&&S.p.fishProxy?'الصوت جاهز للاختبار':'شغّل الخادم المحلي وافتح رابط localhost'}</small><p style="direction:ltr;text-align:left;margin-top:8px">عنوان التطبيق: http://localhost:8787<br>عنوان خادم الصوت: http://localhost:8787/api/tts</p><button class="btn o" data-a=tab data-t=set>⚙️ إعدادات ربط الصوت</button><audio id=fishPlayer controls style="display:none;width:100%;margin-top:10px"></audio></div>
+ <div class=card><input id=lg class=in placeholder="سجّل يومك: ذاكرت ساعة وصليت الظهر وتمرنت رجل"><button class=btn data-a=log>حلّل وسجّل</button><button class="btn o" data-a=lite>😮‍💨 مخنوق / عاوز أفصل</button></div>
+ ${pend?`<div class=card><b>فهمت كده:</b><p>${esc(pend.summary)}</p>${d.tasks.map(t=>`<label class=cb><input type=checkbox data-lt=${t.id} ${pend.tasks.includes(t.id)?'checked':''}>${esc(t.t)}</label>`).join('')}${Object.keys(PN).map(k=>`<label class=cb><input type=checkbox data-lp=${k} ${(pend.prayers||[]).includes(k)?'checked':''}>${PN[k]}</label>`).join('')}<button class=btn data-a=lok>احفظ</button><button class="btn o" data-a=lno>إلغاء</button></div>`:''}
+ <div class=card><h3>مهام النهاردة</h3>${n?d.tasks.map(t=>`<div class="tk ${t.done?'dn':''}"><button class=ck data-a=tg data-i=${t.id}>${t.done?'✓':''}</button><div class=tb><b>${esc(t.t)}</b><small>${CE[t.cat]||'✨'} ${esc(t.time||'')} ${esc(t.d||'')}</small></div><button class=sw data-a=swap data-i=${t.id}>⟳</button></div>`).join(''):'<p>مفيش مهام لسه.</p>'}<button class="btn o" data-a=replan>جهّز الخطة تاني</button></div>
+ <div class=card><h3>💧 ${d.water}/8 كوباية</h3><button class=btn data-a=water>+ كوباية</button><label>إيه أهم حاجة اتعلمتها النهاردة؟</label><input id=nt class=in value="${esc(d.note)}"><button class=btn data-a=note>احفظ</button></div>
+ <div class=card><h3>المراجعة الأسبوعية</h3><div class=bars>${W.map(v=>`<i style="height:${Math.max(4,v*100)}%"></i>`).join('')}</div>${S.rv?`<p style="color:var(--t)">💪 أقوى جانب: ${esc(S.rv.best)}<br>🌱 محتاج اهتمام: ${esc(S.rv.weak)}<br>🎯 الأسبوع الجاي: ${esc(S.rv.next)}<br>${esc(S.rv.sum)}</p>`:''}<button class=btn data-a=review>${new Date().getDay()==5?'مراجعة الجمعة':'اعمل مراجعة الأسبوع'}</button></div>`;
+};
+V.pray=()=>{
+ const n=new Date(),T=times(n),d=day(),[nk]=nextP();let ban='';
+ for(const k in PN)if(n-T[k]>=0&&n-T[k]<15e5&&!d.pr[k])ban=`<div class=bn>🕌 حان الآن موعد أذان ${PN[k]}</div>`;
+ const wk=[...Array(7)].reduce((s,_,i)=>s+Object.keys((S.days[ds(-i)]||{pr:{}}).pr).length,0);
+ const am=n>=T.fajr&&n<T.dhuhr,pm=n>=T.asr&&n<T.isha;
+ return `${ban}<div class="card hero"><div><small>الصلاة الجاية</small><h2>${PN[nk]}</h2><b class=cd></b></div></div>
+ <div class=card>${Object.keys(PN).map(k=>`<div class="tk ${d.pr[k]?'dn':''}"><button class=ck data-a=pr data-k=${k}>${d.pr[k]?'✓':''}</button><div class=tb><b>${PN[k]}</b></div><b>${fmt(T[k])}</b></div>`).join('')}<p>التزامك آخر ٧ أيام: ${wk} من ٣٥ صلاة</p></div>
+ ${am||pm?`<div class=card><h3>${am?'أذكار الصباح 🌅':'أذكار المساء 🌙'}</h3><p style="color:var(--t)">${am?'أصبحنا وأصبح الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له.':'أمسينا وأمسى الملك لله، والحمد لله، لا إله إلا الله وحده لا شريك له.'}<br>آية الكرسي، والمعوذات ٣ مرات، وسبحان الله وبحمده ١٠٠ مرة.</p></div>`:''}`;
+};
+const spark=a=>{if(a.length<2)return'';const mx=Math.max(...a),mn=Math.min(...a),r=mx-mn||1;return `<svg viewBox="0 0 100 24" class=sp><polyline fill=none stroke="#ff7a1a" stroke-width=3 points="${a.map((v,i)=>`${i*100/(a.length-1)},${22-(v-mn)/r*20}`).join(' ')}"/></svg>`};
+V.gym=()=>{
+ const g=S.gym,c=g.cur,L=g.log,x=c&&c.ex[c.i];let h;
+ if(c)h=x?`<div class=card><small>${esc(c.type)}: ${esc(c.why)}</small><h3>${esc(x.n)}</h3><p>${x.sets} مجموعات × ${esc(x.reps)} تكرار، وإنت في المجموعة ${c.set+1}</p><p>🧍 ${esc(x.how)}</p><p>⚠️ ${esc(x.err)}</p><a class="btn o" target=_blank rel=noopener href="https://www.youtube.com/results?search_query=${encodeURIComponent(x.q)}">▶ شرح بالفيديو</a><input id=gw class=in type=number placeholder="الوزن بالكيلو" value="${x.w||''}"><button class=btn data-a=gset>خلّصت مجموعة</button>${rest>0?`<div class=rest>راحة: <b id=rs>${rest}</b> ثانية</div>`:''}</div>`:`<div class=card><h3>خلّصت تمرين النهاردة 🔥</h3><button class=btn data-a=gend>تمام</button></div>`;
+ else h=`<div class=card><h3>اختار تمرينك بنفسك</h3><label>تركيز التمرين</label><select class=in id=workoutFocus><option value=full>جسم كامل</option><option value=upper>الجزء العلوي</option><option value=lower>الجزء السفلي</option><option value=core>وسط الجسم</option></select><p>الخطة قابلة للتعديل. اقرأ شرح الحركة واختر مستوى يناسبك.</p><button class=btn data-a=gask data-p="الجيم">🏋️ جهّز تمرين جيم</button><button class="btn o" data-a=gask data-p="البيت">🏠 جهّز تمرين بيت</button></div>`;
+ const ns=[...new Set(L.map(l=>l.n))].slice(-6);
+ return h+`<div class=card><h3>🦵 السمانة (يومي)</h3><p>رفع السمانة واقف: ٤ مجموعات × ١٥. اطلع على أطراف صوابعك ببطء، اثبت ثانية فوق، وانزل لحد ما تحس بالشد. متنزلش بسرعة.</p><button class=btn data-a=calf>${day().calf?'اتعملت ✓':'خلّصتها'}</button></div>
+ ${ns.length?`<div class=card><h3>تقدّمك</h3>${ns.map(n=>{const w=L.filter(l=>l.n==n).map(l=>l.w);return `<div class=tk><div class=tb><b>${esc(n)}</b><small>آخر وزن ${w[w.length-1]} كجم</small></div>${spark(w)}</div>`}).join('')}</div>`:''}`;
+};
+const LK={quran:['📖','القرآن','حدّد سورة أو جزء أو عدد صفحات النهاردة لحد الختمة، وكمّل من آخر اللي خلّصه المستخدم'],book:['📚','الكتاب','اقترح كتاب مناسب لأهدافه وعدد صفحات يومي، أو كمّل الكتاب الحالي لحد ما يخلص'],eng:['🔤','الإنجليزي','فيديو أو درس إنجليزي مناسب لمستوى A2 (وارفعه لـ B1 لما يثبت)'],cs:['💻','حاسبات ومعلومات','درس يومي صغير من منهج مرتب (أساسيات البرمجة، هياكل البيانات والخوارزميات، قواعد البيانات، الشبكات، نظم التشغيل، الرياضيات المنفصلة، أمن المعلومات) وفيه تمرين أو سؤال'],vid:['🎬','فيديو مفيد','موضوع فيديو مفيد بالعربي أو الإنجليزي في الثقة بالنفس أو ترتيب الكلام أو التفكير أو الإكسيل أو الحاسبات']};
+const QURAN_CHAPTERS='الفاتحة|7,البقرة|286,آل عمران|200,النساء|176,المائدة|120,الأنعام|165,الأعراف|206,الأنفال|75,التوبة|129,يونس|109,هود|123,يوسف|111,الرعد|43,إبراهيم|52,الحجر|99,النحل|128,الإسراء|111,الكهف|110,مريم|98,طه|135,الأنبياء|112,الحج|78,المؤمنون|118,النور|64,الفرقان|77,الشعراء|227,النمل|93,القصص|88,العنكبوت|69,الروم|60,لقمان|34,السجدة|30,الأحزاب|73,سبأ|54,فاطر|45,يس|83,الصافات|182,ص|88,الزمر|75,غافر|85,فصلت|54,الشورى|53,الزخرف|89,الدخان|59,الجاثية|37,الأحقاف|35,محمد|38,الفتح|29,الحجرات|18,ق|45,الذاريات|60,الطور|49,النجم|62,القمر|55,الرحمن|78,الواقعة|96,الحديد|29,المجادلة|22,الحشر|24,الممتحنة|13,الصف|14,الجمعة|11,المنافقون|11,التغابن|18,الطلاق|12,التحريم|12,الملك|30,القلم|52,الحاقة|52,المعارج|44,نوح|28,الجن|28,المزمل|20,المدثر|56,القيامة|40,الإنسان|31,المرسلات|50,النبأ|40,النازعات|46,عبس|42,التكوير|29,الانفطار|19,المطففين|36,الانشقاق|25,البروج|22,الطارق|17,الأعلى|19,الغاشية|26,الفجر|30,البلد|20,الشمس|15,الليل|21,الضحى|11,الشرح|8,التين|8,العلق|19,القدر|5,البينة|8,الزلزلة|8,العاديات|11,القارعة|11,التكاثر|8,العصر|3,الهمزة|9,الفيل|5,قريش|4,الماعون|7,الكوثر|3,الكافرون|6,النصر|3,المسد|5,الإخلاص|4,الفلق|5,الناس|6'.split(',').map(x=>{const [name,n]=x.split('|');return {name,count:+n}});
+const LEARN_PRESETS={
+ book:[
+  {title:'قراءة مركزة: ٥ صفحات',detail:'اقرأ خمس صفحات من كتابك الحالي على مهل. بعد القراءة، اكتب فكرة واحدة أعجبتك أو سؤالًا خطر في بالك.',q:''},
+  {title:'جلسة قراءة لمدة ١٠ دقائق',detail:'كمّل من آخر صفحة وصلت لها في كتابك الحالي. ركّز على الفهم، مش عدد الصفحات.',q:''},
+  {title:'راجع فكرة من قراءتك',detail:'افتح آخر جزء قرأته، واكتب ملخصًا من سطرين ثم حدّد صفحة تكمل منها.',q:''}
+ ],
+ eng:[
+  {title:'إنجليزي A2: احكي عن يومك',detail:'اكتب ٥ جمل بسيطة عن يومك باستخدام: I woke up, I studied, I worked, I felt, I learned. اقرأها بصوت واضح.',q:'English A2 daily routine speaking practice'},
+  {title:'إنجليزي A2: الماضي البسيط',detail:'اكتب ٥ جمل عن أمس باستخدام أفعال مثل went و studied و watched. اقرأ كل جملة مرتين.',q:'English A2 simple past practice'},
+  {title:'إنجليزي A2: خططك لبكرة',detail:'اكتب ٥ جمل قصيرة عن خططك باستخدام I will أو I am going to، ثم قلها بصوت عالٍ.',q:'English A2 talking about future plans'}
+ ],
+ quran:[
+  {title:'ورد قصير بتدبر',detail:'اقرأ صفحتين أو مقدارًا يناسب وقتك، واختر آية واحدة لتتدبر معناها من تفسير موثوق.',q:''},
+  {title:'مراجعة ما قرأت',detail:'راجع آخر سورة أو صفحات قرأتها، ثم أكمل مقدارًا صغيرًا يناسب وقتك.',q:''}
+ ],
+ cs:[
+  {title:'أساسيات البرمجة: المتغيرات',detail:'تعلّم معنى المتغير، ثم اكتب مثالًا يخزن اسمًا ورقمًا. جرّب تغيير القيمة ولاحظ النتيجة.',q:'شرح المتغيرات في البرمجة للمبتدئين بالعربي'},
+  {title:'أساسيات البرمجة: الشروط',detail:'افهم if و else، واكتب مثالًا يطبع رسالة مختلفة حسب قيمة رقم.',q:'شرح if else للمبتدئين بالعربي'}
+ ],
+ vid:[
+  {title:'فيديو مفيد: الاستماع قبل الرد',detail:'شاهد شرحًا قصيرًا عن الاستماع الفعال، ثم لخّص فكرته في سطرين.',q:'مهارة الاستماع الفعال شرح عربي'},
+  {title:'فيديو مفيد: ترتيب الأفكار',detail:'شاهد درسًا قصيرًا عن تنظيم الكلام، وجرّب تلخيص موضوع في ثلاث نقاط.',q:'ترتيب الأفكار والتحدث بثقة شرح عربي'}
+ ]
+};
+function quranRange(p){let i=Math.max(0,Math.min(113,(+p.surah||1)-1)),v=Math.max(1,+p.verse||1),left=Math.max(1,+p.perDay||5),ranges=[];while(left>0&&i<114){const max=QURAN_CHAPTERS[i].count;if(v>max){i++;v=1;continue}const end=Math.min(max,v+left-1);ranges.push({i,from:v,to:end});left-=end-v+1;if(end<max){v=end+1;break}i++;v=1}return {ranges,nextSurah:Math.min(i+1,114),nextVerse:i>=114?QURAN_CHAPTERS[113].count+1:v,complete:i>=114}}
+function learnSuggestion(k,l){if(k==='quran'){const p=l.plan;if(!p)return {title:'ابدأ خطة القرآن',detail:'اختار سورة بداية وكمية يومية مرة واحدة، والتطبيق يحدد لك المقطع التالي بعد كل إنجاز.',q:''};if(p.completed)return {title:'أكملت خطة القرآن 🎉',detail:'مررت على السور كلها حسب نقطة البداية والكمية اليومية التي اخترتها. اختار بداية جديدة إن أردت المتابعة.',q:''};const r=quranRange(p);return {title:'ورد اليوم: '+r.ranges.map(x=>`سورة ${QURAN_CHAPTERS[x.i].name} ${x.from}–${x.to}`).join('، '),detail:`اقرأ ${p.perDay} آيات حسب خطة التدرّج. بعد الضغط على «تم» ينتقل التطبيق تلقائيًا للمقطع التالي.`,q:''}}if(k==='book'){const p=l.plan;if(!p)return {title:'ابدأ خطة كتابك',detail:'اكتب اسم كتابك ورقم الصفحة الحالية والأخيرة، والتطبيق يقسم القراءة اليومية ويتابع تقدمك.',q:''};if(p.current>p.end)return {title:'أنهيت الكتاب 🎉',detail:`أكملت خطة قراءة ${p.name}. يمكنك تسجيل كتاب جديد من الحقول أعلاه.`,q:''};const last=Math.min(p.end,p.current+Math.max(1,p.perDay)-1);return {title:`${p.name}: الصفحات ${p.current}–${last}`,detail:`اقرأ الصفحات ${p.current} إلى ${last}. بعد الضغط على «تم» سيحفظ التطبيق تقدمك ويجهز الصفحات التالية.`,q:''}}const history=(l.hist||[]).map(x=>x.t),current=l.cur&&!l.cur.done?l.cur.title:'';const options=LEARN_PRESETS[k]||[];return options.find(x=>x.title!==current&&!history.includes(x.title))||options.find(x=>x.title!==current)||options[0]}
+const WORKOUT_PLANS={full:[['قرفصاء لكرسي',3,'8–12','المس الكرسي ثم قف بتحكم.','توقف عند الألم الحاد.'],['ضغط على الحائط أو سطح مرتفع',3,'6–10','حافظ على الجسم مستقيمًا.','اختر مستوى سهلًا مناسبًا.'],['جسر الحوض',3,'10–12','ارفع الحوض بتحكم ثم انزل.','لا تبالغ في تقويس الظهر.'],['سحب حقيبة خفيفة',3,'8–12','اسحب باتجاه الجذع وظهرك ثابت.','ابدأ بحمل خفيف.']],upper:[['ضغط مائل على الحائط',3,'6–10','حافظ على الجسم مستقيمًا.','قلل الميل إذا كان صعبًا.'],['سحب حقيبة خفيفة',3,'8–12','اسحب باتجاه الجذع وظهرك ثابت.','ابدأ بوزن خفيف.'],['رفع زجاجتي ماء للجانب',2,'10–12','ارفع حتى مستوى مريح.','توقف إذا آلمك الكتف.'],['ضغط كتف بزجاجتي ماء خفيفتين',2,'8–10','ادفع لأعلى بتحكم.','توقف عند الألم.']],lower:[['قرفصاء لكرسي',3,'8–12','المس الكرسي ثم قف ببطء.','اجعل الركبتين باتجاه أصابع القدم.'],['جسر الحوض',3,'10–12','ارفع الحوض ثم انزل ببطء.','حافظ على الظهر مرتاحًا.'],['خطوة خلفية مع مسك كرسي',2,'6 لكل جانب','انزل مسافة مريحة مع دعم.','تجاوزها إذا اختل التوازن.'],['رفع السمانة واقفًا',3,'12–15','ارفع الكعبين واثبت لحظة.','تحرك ببطء.']],core:[['شد البطن مع التنفس',3,'5 أنفاس','شد البطن بلطف مع تنفس طبيعي.','لا تحبس النفس.'],['Bird-dog',2,'6 لكل جانب','مد ذراعًا ورجلًا عكسية بظهر ثابت.','قلل المدى إذا اختل التوازن.'],['جسر الحوض',3,'10–12','ارفع الحوض بتحكم.','توقف عند الألم.'],['بلانك على الحائط',3,'15–25 ثانية','اسند ساعديك على الحائط وحافظ على جسم مستقيم.','اختر وقتًا مريحًا.']]};
+function workoutPlan(focus,place){const rows=WORKOUT_PLANS[focus]||WORKOUT_PLANS.full;return {type:`${{full:'جسم كامل',upper:'جزء علوي',lower:'جزء سفلي',core:'وسط الجسم'}[focus]||'جسم كامل'} · ${place}`,why:'خطة بداية مرنة. خذ راحة بين المجموعات واختر مستوى يناسبك. توقف عند الألم الحاد.',ex:rows.map(([n,sets,reps,how,err])=>({n,sets,reps,how,err,q:`${n} شرح للمبتدئين`,w:0})),i:0,set:0}}
+function repairLearnState(){const q=S.learn?.quran;if(q?.choice&&!q.plan){const i=QURAN_CHAPTERS.findIndex(x=>x.name===q.choice.surah);q.plan={surah:i>=0?i+1:1,verse:+q.choice.from||1,perDay:Math.max(1,(+q.choice.to||(+q.choice.from||1)+4)-(+q.choice.from||1)+1)}}const b=S.learn?.book;if(b?.choice&&!b.plan)b.plan={name:b.choice.name||'كتابي الحالي',current:+b.choice.from||1,end:+b.choice.to||9999,perDay:5};const c=b?.cur;if(c&&(/english|إنجليزي|الإنجليزي|بالإنجليزية|يومك في ٥ جمل/i.test(`${c.title||''} ${c.detail||''}`)))b.cur={...LEARN_PRESETS.book[0],done:false}}
+V.learn=()=>`<div class=card><h3>📖 خطة القرآن اليومية</h3><p>اختار نقطة بداية وكمية مناسبة؛ التطبيق يحدد لك آيات اليوم وينقل الخطة تلقائيًا بعد الإنجاز.</p><label>ابدأ من سورة</label><select class=in id=qSurah>${QURAN_CHAPTERS.map((s,i)=>`<option value=${i+1} ${i+1===(S.learn.quran?.plan?.surah||1)?'selected':''}>${s.name}</option>`).join('')}</select><div style="display:flex;gap:8px"><div style="flex:1"><label>رقم الآية الحالية</label><input class=in id=qStart type=number min=1 value="${S.learn.quran?.plan?.verse||1}"></div><div style="flex:1"><label>آيات في اليوم</label><input class=in id=qDaily type=number min=1 max=100 value="${S.learn.quran?.plan?.perDay||5}"></div></div><button class="btn o" data-a=saveQuran>حفظ خطة القرآن</button></div><div class=card><h3>📚 خطة الكتاب اليومية</h3><p>اكتب كتابك وصفحاته؛ التطبيق يقسمها إلى قراءة يومية ويتابع الصفحة التالية.</p><label>اسم الكتاب</label><input class=in id=bookName value="${esc(S.learn.book?.plan?.name||'')}" placeholder="اسم الكتاب الذي تقرؤه"><div style="display:flex;gap:8px"><div style="flex:1"><label>الصفحة الحالية</label><input class=in id=bCurrent type=number min=1 value="${S.learn.book?.plan?.current||1}"></div><div style="flex:1"><label>آخر صفحة</label><input class=in id=bEnd type=number min=1 value="${S.learn.book?.plan?.end||''}"></div><div style="flex:1"><label>صفحات يوميًا</label><input class=in id=bDaily type=number min=1 value="${S.learn.book?.plan?.perDay||5}"></div></div><button class="btn o" data-a=saveBook>حفظ خطة الكتاب</button></div>`+Object.keys(LK).map(k=>{const l=S.learn[k]||{},c=l.cur,finished=(k==='book'&&l.plan&&l.plan.current>l.plan.end)||(k==='quran'&&l.plan?.completed);return `<div class=card><h3>${LK[k][0]} ${LK[k][1]}</h3>${c?`<b>${esc(c.title)}</b><p>${esc(c.detail)}</p>${c.q?`<a class="btn o" target=_blank rel=noopener href="https://www.youtube.com/results?search_query=${encodeURIComponent(c.q)}">▶ ابحث في يوتيوب</a>`:''}${c.done?'<p>✓ خلّصته</p>':finished?'<p>اكتملت خطتك 🎉</p>':`<button class=btn data-a=ldone data-k=${k}>تم</button>`}`:'<p>لسه مفيش اقتراح لسه.</p>'}<button class="btn o" data-a=lgen data-k=${k}>${c?'التالي':'هات لي النهاردة'}</button></div>`}).join('')
+ +`<div class=card><h3>🎤 اتكلم ٦٠ ثانية</h3><p style="color:var(--t)">${esc(S.sp||'اضغط علشان تاخد موضوع')}</p><b id=sp style="font-size:26px">${sp||''}</b><br><button class=btn data-a=stopic>موضوع جديد</button>${S.sp?'<button class=btn data-a=sgo>ابدأ</button>':''}</div><div class=card><small>كلمات الإنجليزي المحفوظة: ${S.words.length}</small></div>`;
+V.chat=()=>`${S.chat.length?S.chat.slice(-30).map(m=>`<div class="bub ${m.r=='user'?'u':'a'}">${esc(m.c)}</div>`).join(''):'<div class="bub a">أهلًا! احكيلي عن يومك أو اسألني في أي حاجة تخص دراستك وأهدافك.</div>'}<div class=card><input id=ci class=in placeholder="اكتب هنا..."><button class=btn data-a=send>ابعت</button></div>`;
+V.set=first=>{const p=S.p;return `<div class=card>${first?'<h2>أهلًا بيك في مدرّبي 👋</h2><p>اظبط شوية حاجات وبعدين نبدأ. كلها تتعدل بعدين من الإعدادات.</p>':''}
+ <label>اسمك</label><input class=in data-k=name value="${esc(p.name)}"><label>صورتك</label><input type=file accept=image/* data-k=photo>
+ <label>المدينة</label><select class=in data-k=city>${opts(Object.keys(CITY),p.city)}</select>
+ <label>طريقة حساب المواقيت</label><select class=in data-k=method>${Object.keys(MT).map(k=>`<option value=${k} ${k==p.method?'selected':''}>${MT[k][0]}</option>`).join('')}</select>
+ <label>الشغل من الساعة</label><input class=in type=number data-k=ws value=${p.ws}><label>لحد الساعة</label><input class=in type=number data-k=we value=${p.we}>
+ <div class=card><h3>🔔 متابعة يومية</h3><p>اختار وقت التذكير. التذكير يظهر عندما يكون الموقع مفتوحًا؛ إشعار الهاتف والتطبيق مغلق يحتاجان نشرًا وإعداد خدمة الإشعارات.</p><label>وقت المراجعة اليومية</label><input class=in type=time data-k=reminderTime value="${esc(p.reminderTime||'20:00')}"><button class=btn data-a=remEnable>${p.reminderEnabled?'إيقاف التذكير':'تفعيل التذكير'}</button></div>
+ <p>التخطيط والردود والمراجعات تعمل داخل التطبيق بدون طلب مفتاح Claude API.</p>
+ <div style="border-top:1px solid var(--ln);margin-top:16px;padding-top:12px"><h3>🐟 ربط Fish Audio</h3><p>التطبيق يرسل الطلب إلى الخادم المحلي، والخادم يستخدم مفتاح Fish Audio المحفوظ في ملف إعداد خاص على جهازك. لا تضع المفتاح في صفحة التطبيق.</p><label>عنوان الخادم الوسيط</label><input class=in type=url data-k=fishProxy value="${esc(p.fishProxy)}" placeholder="/api/tts"><label>معرّف الصوت المصرح به (Voice / Reference ID)</label><input class=in data-k=fishVoice value="${esc(p.fishVoice)}" placeholder="أدخل معرّف صوت من حسابك"><p>شغّل الخادم أولًا وافتح التطبيق من الرابط المحلي الذي يظهر في نافذة التشغيل.</p><button class="btn o" data-a=fishPreview>اختبار إعداد الصوت</button><small id=fishStatus style="display:block;margin-top:8px"></small><audio id=fishPlayer controls style="display:none;width:100%;margin-top:10px"></audio></div>
+ ${first?'<button class=btn data-a=start>يلا نبدأ</button>':`<label>تعديل المواقيت بالدقايق</label>${Object.keys(PN).map(k=>`<label>${PN[k]}</label><input class=in type=number data-k="off.${k}" value=${S.off[k]||0}>`).join('')}
+ <button class=btn data-a=exp>تصدير</button><label class=btn style="display:inline-block">استيراد<input type=file hidden data-k=imp></label><button class="btn o" data-a=reset>إعادة ضبط</button>`}</div>`};
+function render(){
+ const f=!S.done,b=[['home','🏠','الرئيسية'],['pray','🕌','الصلاة'],['gym','💪','الجيم'],['learn','🎓','التعلّم'],['chat','💬','المدرّب'],['set','⚙️','إعدادات']];
+ $('#app').innerHTML=f?`<main>${V.set(1)}</main>`:`<header><div class=av style="${S.p.photo?`background-image:url(${S.p.photo})`:''}">${S.p.photo?'':esc((S.p.name||'م')[0])}</div><div class=nm>${esc(S.p.name)}</div><span class=chip>⭐ م${lvl()} · ${S.xp}</span><span class=chip>🔥 ${streak()}</span></header><main>${V[tab]()}</main><nav>${b.map(x=>`<button class="${tab==x[0]?'on':''}" data-a=tab data-t=${x[0]}><span>${x[1]}</span>${x[2]}</button>`).join('')}</nav>`;
+ $('#ov').innerHTML=busy?`<div class=ld><i></i>${busy}</div>`:'';
+ if(tab=='chat'&&!f)scrollTo(0,document.body.scrollHeight);
+}
+function conf(){for(let i=0;i<50;i++){const e=document.createElement('i');e.className='cf';e.style.cssText=`left:${Math.random()*100}vw;background:hsl(${Math.random()*360},90%,60%);animation-delay:${Math.random()*.5}s;--x:${(Math.random()-.5)*200}px`;document.body.appendChild(e);setTimeout(()=>e.remove(),2800)}}
+
+/* ===== الأفعال ===== */
+const A={
+ tab:d=>{tab=d.t;render()},
+ start:()=>{if(!S.p.name)return tm('اكتب اسمك الأول');S.done=1;save();run('المدرّب بيجهّز خطتك…',plan)},
+ remEnable:async()=>{if(S.p.reminderEnabled){S.p.reminderEnabled=false;await save();tm('اتوقف التذكير اليومي');render();return}let granted=false;try{granted='Notification'in window&&await Notification.requestPermission()==='granted'}catch(_){}S.p.reminderEnabled=true;await save();tm(granted?'اتفعّل التذكير اليومي':'اتفعّل التذكير داخل الموقع؛ اسمح بالإشعارات ليظهر تنبيه الهاتف');render()},
+ tg:d=>{const D=day(),t=D.tasks.find(x=>x.id==d.i);t.done=!t.done;addXp(t.done?10:-10);if(D.tasks.every(x=>x.done)&&!D.cf){D.cf=1;conf();tm('ما شاء الله! خلّصت يومك 🎉')}save();render();if(t.done)taskDoneVoice()},
+ swap:d=>run('بدوّر على بديل…',async()=>{const D=day(),i=D.tasks.findIndex(x=>x.id==d.i),o=D.tasks[i],r=await ai(SYS()+'\n'+ctx(),`المهمة دي مش مناسبة: ${o.t}. اقترح بديل مختلف في نفس الوقت تقريبًا. رجّع {"t":"","time":"","cat":"","d":""}`);D.tasks[i]={...r,id:o.id,done:false};S.sug.push(r.t)}),
+ replan:()=>run('بجهّز الخطة…',plan),
+ lite:()=>run('هنخفّف اليوم، وعادي خالص 🤍',lightMode),
+ water:()=>{day().water++;save();render()},
+ note:()=>{day().note=$('#nt').value;addXp(3);save();tm('اتحفظت ✓');render()},
+ pr:d=>{const D=day();if(D.pr[d.k])delete D.pr[d.k];else{D.pr[d.k]=1;addXp(5);taskDoneVoice()}save();render()},
+ log:()=>{const v=$('#lg').value.trim();if(!v)return;run('بفهم كلامك…',async()=>{pend=await ai(SYS(),`النهاردة كتب: "${v}". مهامه: ${JSON.stringify(day().tasks.map(t=>({id:t.id,t:t.t})))}. مفاتيح الصلوات: fajr,dhuhr,asr,maghrib,isha. رجّع {"tasks":["ids اللي خلّصها"],"prayers":["مفاتيح"],"summary":"اللي فهمته بجملة","overwhelmed":false}`)})},
+ lno:()=>{pend=null;render()},
+ lok:()=>{const D=day(),justDone=[];document.querySelectorAll('[data-lt]').forEach(e=>{const t=D.tasks.find(x=>x.id==e.dataset.lt);if(e.checked&&!t.done){t.done=true;addXp(10);justDone.push(t)}});document.querySelectorAll('[data-lp]').forEach(e=>{if(e.checked&&!D.pr[e.dataset.lp]){D.pr[e.dataset.lp]=1;addXp(5)}});const o=pend.overwhelmed;pend=null;if(o)run('هنخفّف اليوم 🤍',lightMode);else{save();render()}justDone.forEach(()=>taskDoneVoice())},
+ review:()=>run('بجهّز المراجعة…',async()=>{S.rv=await ai(SYS()+'\n'+ctx(),'اعمل مراجعة أسبوعية. رجّع {"sum":"ملخص الأسبوع","best":"أقوى جانب","weak":"أضعف جانب","next":"اقتراح للأسبوع الجاي"}')}),
+ gask:d=>{const focus=$('#workoutFocus')?.value||'full';S.gym.cur=workoutPlan(focus,d.p);render()},
+ gset:()=>{const c=S.gym.cur,x=c.ex[c.i];S.gym.log.push({d:ds(),n:x.n,w:+$('#gw').value||0,type:c.type});addXp(4);c.set++;if(c.set>=x.sets){c.i++;c.set=0;rest=0}else rest=90;save();render()},
+ gend:()=>{S.gym.cur=null;addXp(20);const t=day().tasks.find(x=>x.cat=='gym');if(t&&!t.done)t.done=true;taskDoneVoice();save();render()},
+ calf:()=>{if(!day().calf){day().calf=1;addXp(5);taskDoneVoice();save();render()}},
+ lgen:d=>run('المدرّب بيختار لك…',async()=>{const k=d.k,l=S.learn[k]||(S.learn[k]={hist:[]});if(!l.hist)l.hist=[];const r=learnSuggestion(k,l);if(!r){tm('القسم ده لسه مفيهوش اقتراحات');return}l.cur={...r,done:false};S.sug.push(r.title)}),
+ ldone:d=>{const l=S.learn[d.k];let a='';if(d.k=='eng'||d.k=='vid'){a=prompt(d.k=='eng'?'اكتب ٣ كلمات جديدة وجملة بيهم':'لخّص الفيديو في سطرين');if(!a)return}l.cur.done=1;(l.hist=l.hist||[]).push({t:l.cur.title,a});if(d.k=='eng')S.words.push({w:a,d:ds(),due:ds(1),box:0});if(d.k==='quran'&&l.plan){const r=quranRange(l.plan);l.plan.surah=r.nextSurah;l.plan.verse=r.nextVerse;l.plan.completed=r.complete;l.cur=l.plan.completed?{title:'أكملت خطة القرآن 🎉',detail:'انتهيت من المرور على السور حسب نقطة البداية والكمية اليومية التي اخترتها.',q:'',done:false}:{...learnSuggestion('quran',l),done:false}}if(d.k==='book'&&l.plan){l.plan.current=Math.min(l.plan.end+1,l.plan.current+Math.max(1,l.plan.perDay));l.cur=l.plan.current>l.plan.end?{title:'أنهيت الكتاب 🎉',detail:`أكملت خطة قراءة ${l.plan.name}.`,q:'',done:false}:{...learnSuggestion('book',l),done:false}}addXp(15);save();render();taskDoneVoice()},
+ saveQuran:()=>{const l=S.learn.quran||(S.learn.quran={hist:[]}),surah=+$('#qSurah').value,verse=+$('#qStart').value||1,perDay=+$('#qDaily').value||5;if(verse>QURAN_CHAPTERS[surah-1].count)return tm('رقم الآية أكبر من عدد آيات السورة');l.plan={surah,verse,perDay:Math.min(100,Math.max(1,perDay)),completed:false};l.cur={...learnSuggestion('quran',l),done:false};save();tm('اتحفظت خطة القرآن اليومية');render()},
+ saveBook:()=>{const l=S.learn.book||(S.learn.book={hist:[]}),name=$('#bookName').value.trim(),current=+$('#bCurrent').value||1,end=+$('#bEnd').value||0,perDay=+$('#bDaily').value||5;if(!name)return tm('اكتب اسم الكتاب الأول');if(!end||current>end)return tm('راجع رقم الصفحة الحالية وآخر صفحة');l.plan={name,current,end,perDay:Math.max(1,perDay)};l.cur={...learnSuggestion('book',l),done:false};save();tm('اتحفظت خطة الكتاب اليومية');render()},
+ stopic:()=>run('بجيب موضوع…',async()=>{S.sp=(await ai(SYS(),'اديني موضوع بسيط أتكلم عنه ٦٠ ثانية لتدريب الثقة وترتيب الكلام. رجّع {"topic":""}')).topic}),
+ sgo:()=>{const R=window.SpeechRecognition||window.webkitSpeechRecognition;let tr='',rc;if(R){rc=new R();rc.lang='ar-EG';rc.continuous=true;rc.onresult=e=>tr=[...e.results].map(r=>r[0].transcript).join(' ');rc.start()}sp=60;clearInterval(iv);iv=setInterval(()=>{sp--;const e=$('#sp');e&&(e.textContent=sp);if(sp<=0){clearInterval(iv);rc&&rc.stop();addXp(15);run('بسمع كلامك…',async()=>{tm(await ai(SYS(),`اتكلم ٦٠ ثانية عن "${S.sp}". كلامه: "${tr||'(مفيش تسجيل صوتي)'}". اديله ملاحظة قصيرة مشجعة.`,false))})}},1000)},
+ send:()=>{const v=$('#ci').value.trim();if(!v)return;S.chat.push({r:'user',c:v});run('المدرّب بيرد…',async()=>{let m=S.chat.slice(-14).map(x=>({role:x.r,content:x.c}));while(m[0]&&m[0].role!='user')m.shift();const r=await ai(SYS()+'\n'+ctx()+'\nمهام النهاردة: '+JSON.stringify(day().tasks.map(t=>({id:t.id,t:t.t,done:t.done})))+'\nرد بالعامية المصرية. رجّع {"reply":"","done":["ids مهام ذكرها إنه خلّصها"],"overwhelmed":false}',null,true,m);S.chat.push({r:'assistant',c:r.reply});(r.done||[]).forEach(i=>{const t=day().tasks.find(x=>x.id==i);if(t&&!t.done){t.done=true;addXp(10);taskDoneVoice()}});if(r.overwhelmed)await lightMode()})},
+ fishSpeak:()=>fishTts(VOICE_LINES[+$('#fishLine')?.value||0]),
+ fishPreview:()=>fishTts(VOICE_LINES[0]),
+ exp:()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:'application/json'}));a.download='modarrebi-backup.json';a.click()},
+ reset:()=>{if(confirm('متأكد؟ كل بياناتك هتتمسح.')){S=DEF();save();render()}}
+};
+function unlockVoiceAudio(){try{const C=window.AudioContext||window.webkitAudioContext;if(!C)return;audioCtx=audioCtx||new C();if(audioCtx.state==='suspended')audioCtx.resume().catch(()=>{})}catch(_){}}
+async function fishTts(text,automatic=false){
+ const status=$('#fishStatus'),player=$('#fishPlayer');
+ if(!S.p.fishProxy||!S.p.fishVoice){tm('أدخل عنوان الخادم الوسيط ومعرّف الصوت في الإعدادات');return}
+ if(status)status.textContent='جاري إنشاء الصوت…';
+ try{
+  const endpoint=new URL(S.p.fishProxy,location.href);
+  if(endpoint.protocol!=='https:'&&endpoint.hostname!=='localhost'&&endpoint.hostname!=='127.0.0.1')throw new Error('استخدم عنوان HTTPS لخادم الوسيط.');
+  const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text,reference_id:S.p.fishVoice,model:'s2.1-pro-free',format:'mp3',direction:VOICE_STYLE})});
+  if(!response.ok){let detail='';try{const j=await response.json();detail=j.message||j.error||j.detail||''}catch(_){try{detail=await response.text()}catch(__){}}throw new Error(detail||`الخادم رفض الطلب (${response.status}).`)}
+  const type=(response.headers.get('content-type')||'').toLowerCase();if(!type.includes('audio')&&!type.includes('octet-stream'))throw new Error('استجابة الخادم ليست ملفًا صوتيًا. تحقق من إعداد الوسيط.');
+  const blob=await response.blob();if(fishAudio)URL.revokeObjectURL(fishAudio);fishAudio=URL.createObjectURL(blob);const out=player||(fishPlayback||(fishPlayback=new Audio()));out.src=fishAudio;if(player)player.style.display='block';if(automatic&&audioCtx&&audioCtx.state==='running'){const decoded=await audioCtx.decodeAudioData(await blob.arrayBuffer()),source=audioCtx.createBufferSource();source.buffer=decoded;source.connect(audioCtx.destination);await new Promise((resolve,reject)=>{source.onended=resolve;try{source.start()}catch(e){reject(e)}})}else await out.play();if(status)status.textContent='تم إنشاء الصوت. لو لم يبدأ، اضغط تشغيل في مشغل الصوت.';
+ }catch(e){const msg=e instanceof TypeError?'تعذر الوصول إلى الخادم. تحقق من عنوانه وCORS والاتصال.':e.message;if(status)status.textContent='خطأ: '+msg;tm(msg)}
+}
+function reserveTaskLine(){
+ let used=Array.isArray(S.voiceUsed)?S.voiceUsed:[];
+ if(used.length>=AUTO_VOICE_LINES.length){const last=used[used.length-1];used=[];let choices=AUTO_VOICE_LINES.map((_,i)=>i).filter(i=>i!==last);const pick=choices[Math.floor(Math.random()*choices.length)];used.push(pick);S.voiceUsed=used;save();return AUTO_VOICE_LINES[pick]}
+ const choices=AUTO_VOICE_LINES.map((_,i)=>i).filter(i=>!used.includes(i));
+ const pick=choices[Math.floor(Math.random()*choices.length)];
+ S.voiceUsed=[...used,pick];save();return AUTO_VOICE_LINES[pick];
+}
+function taskDoneVoice(){
+ if(!S.p.fishProxy||!S.p.fishVoice)return;
+ voiceQueue.push(reserveTaskLine());
+ if(!voiceRunning)playTaskVoiceQueue();
+}
+async function playTaskVoiceQueue(){
+ voiceRunning=true;
+ while(voiceQueue.length){const line=voiceQueue.shift();await fishTts(line,true)}
+ voiceRunning=false;
+}
+document.addEventListener('pointerdown',unlockVoiceAudio,{capture:true,once:true});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-a]');if(b)A[b.dataset.a](b.dataset)});
+document.addEventListener('change',e=>{const t=e.target,k=t.dataset.k;if(!k)return;
+ if(k=='photo'&&t.files[0]){const f=new FileReader();f.onload=()=>{const im=new Image();im.onload=()=>{const c=document.createElement('canvas');c.width=c.height=160;c.getContext('2d').drawImage(im,0,0,160,160);S.p.photo=c.toDataURL('image/jpeg',.8);save();S.done&&render()};im.src=f.result};f.readAsDataURL(t.files[0]);return}
+ if(k=='imp'&&t.files[0]){t.files[0].text().then(x=>{try{S={...DEF(),...JSON.parse(x)};save();render();tm('اتستورد ✓')}catch(_){tm('الملف مش صالح')}});return}
+ if(k.startsWith('off.'))S.off[k.slice(4)]=+t.value||0;else S.p[k]=['ws','we'].includes(k)?+t.value:t.value;save();S.done&&render()});
+function checkReminder(){if(!S.p.reminderEnabled)return;const now=new Date(),hh=String(now.getHours()).padStart(2,'0'),mm=String(now.getMinutes()).padStart(2,'0'),d=day();if(`${hh}:${mm}`!==S.p.reminderTime||d.reminderSent===S.p.reminderTime)return;d.reminderSent=S.p.reminderTime;save();const pending=d.tasks.filter(t=>!t.done),body=pending.length?`لسه عندك ${pending.length} مهمة. افتح مدرّبي واختار أول خطوة.`:'افتح مدرّبي وسجّل إنجازك أو جهّز خطة بكرة.';if(document.visibilityState==='visible'||!('Notification'in window)||Notification.permission!=='granted')tm(body);else new Notification('مدرّبي · وقت المراجعة',{body,tag:'modarribi-daily'});}
+function tick(){const n=new Date();checkReminder();document.querySelectorAll('.cd').forEach(e=>{const s=Math.max(0,Math.floor((nextP()[1]-n)/1e3));e.textContent=[Math.floor(s/3600),Math.floor(s/60)%60,s%60].map(x=>String(x).padStart(2,'0')).join(':')});
+ if(rest>0){rest--;const r=$('#rs');r&&(r.textContent=rest);if(!rest&&navigator.vibrate)navigator.vibrate(300)}
+ if(n.getMinutes()!=lm){lm=n.getMinutes();if(!/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)&&!busy&&!pend)render()}}
+(async()=>{await dbOpen();const s=await dbGet('S');if(s)S={...DEF(),...s,p:{...DEF().p,...s.p}};repairLearnState();render();if('serviceWorker'in navigator&&(location.protocol==='https:'||location.hostname==='localhost'||location.hostname==='127.0.0.1'))navigator.serviceWorker.register('/sw.js').catch(()=>{});setInterval(tick,1000);
+ if(S.done&&!day().tasks.length)run('المدرّب بيجهّز خطتك…',plan)})();
+</script></body></html>
