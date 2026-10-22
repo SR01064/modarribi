@@ -26,7 +26,7 @@ export default {
     if (url.pathname === '/' && request.method === 'GET') {
       return json({ service: 'modarribi-fish-audio', status: 'ok' }, 200, origin);
     }
-    if (url.pathname !== '/api/tts') return json({ message: 'المسار غير موجود.' }, 404, origin);
+    if (!['/api/tts', '/api/comment'].includes(url.pathname)) return json({ message: 'المسار غير موجود.' }, 404, origin);
     if (!allowedOrigin) return json({ message: 'مصدر الطلب غير مسموح.' }, 403);
     if (request.method === 'OPTIONS') {
       return new Response(null, {
@@ -41,6 +41,32 @@ export default {
       });
     }
     if (request.method !== 'POST') return json({ message: 'استخدم POST.' }, 405, origin);
+
+    if (url.pathname === '/api/comment') {
+      if (!env.AI) return json({ message: 'ربط Workers AI غير مفعّل على الخادم.' }, 503, origin);
+      try {
+        const raw = await request.text();
+        if (raw.length > 1024) return json({ message: 'بيانات الطلب أكبر من المسموح.' }, 413, origin);
+        const input = JSON.parse(raw || '{}');
+        const category = ['quran', 'gym', 'book', 'study', 'general'].includes(input?.category) ? input.category : 'general';
+        const result = await env.AI.run('@cf/meta/llama-3.2-1b-instruct', {
+          messages: [
+            { role: 'system', content: 'Write exactly one original, short English sentence (6 to 14 words) as a playful anime-inspired mentor teasing the user for completing a task. Be warm, confident, lightly sarcastic, never insulting. Do not use quotes, emojis, explanations, or imitate any existing character.' },
+            { role: 'user', content: `The completed task category is ${category}. Generate a fresh line.` },
+          ],
+          max_tokens: 36,
+          temperature: 0.9,
+          frequency_penalty: 0.8,
+          presence_penalty: 0.5,
+        });
+        const line = String(result?.response || result?.choices?.[0]?.message?.content || '').replace(/["“”]/g, '').replace(/\s+/g, ' ').trim().slice(0, 180);
+        if (!line) return json({ message: 'لم يرجع الذكاء الاصطناعي تعليقًا.' }, 502, origin);
+        return json({ line }, 200, origin);
+      } catch {
+        return json({ message: 'تعذر توليد تعليق جديد. استخدمت الجمل الاحتياطية في التطبيق.' }, 502, origin);
+      }
+    }
+
     if (!env.FISH_API_KEY) return json({ message: 'مفتاح Fish Audio غير مضبوط على الخادم.' }, 503, origin);
 
     let input;
@@ -95,4 +121,3 @@ export default {
     }
   },
 };
-

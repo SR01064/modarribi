@@ -3,6 +3,8 @@
   "name": "modarribi-fish-audio",
   "main": "src/index.js",
   "compatibility_date": "2026-10-21",
-  "workers_dev": true
+  "workers_dev": true,
+  "ai": {
+    "binding": "AI"
+  }
 }
-
